@@ -22,7 +22,7 @@
     <b>Extra Utgifter -</b><span ng-bind="user.extrautg"></span><br>
     <b>Spara -</b><span ng-bind="user.spara"></span><br>
     <b>Spara denna månad:</b><span ng-bind="user.totalSaved + user.spara"></span><br>
-    <b>Totalt kvar denna månad:</b><span ng-bind="user.inkomst - user.utgifter - user.extrautg"></span><br>
+    <b>Totalt kvar denna månad:</b><span ng-bind="user.inkomst - user.utgifter - user.extrautg - user.spara"></span><br>
     <br>
     <button>Add Month</button>
 </div>
