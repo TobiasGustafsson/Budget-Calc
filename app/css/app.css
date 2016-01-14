@@ -65,8 +65,9 @@ nav {
 
 nav h2 {
     font-size: 22px;
-    margin: 20px 0 0 20px;
+    margin: 0 0 0 20px;
     font-weight: 400;
+    padding-top: 20px;
 }
 
 #login-wrap {
