@@ -3,4 +3,26 @@
 <p>Name: {{user.Name}}</p>
 <p>Age: {{user.Age}}</p>
 <p>Budget: {{user.Budget}}</p>
+
+</div>
+
+<div ng-controller="formCtrl">
+    <form name="budgetForm">
+        Inkomst:<br>
+        <input type="number" name="inkomst" ng-model="user.inkomst"><br>
+        Utgifter: <br>
+        <input type="number" ng-model="user.utgifter"><br>
+        Extra utgifter: <br>
+        <input type="number" ng-model="user.extrautg"><br>
+        Spara: <br>
+        <input type="number" ng-model="user.spara"><br>
+    </form>
+    <b>Inkomst +</b><span ng-bind="user.inkomst"></span><br>
+    <b>Utgifter -</b><span ng-bind="user.utgifter"></span><br>
+    <b>Extra Utgifter -</b><span ng-bind="user.extrautg"></span><br>
+    <b>Spara -</b><span ng-bind="user.spara"></span><br>
+    <b>Spara denna månad:</b><span ng-bind="user.totalSaved + user.spara"></span><br>
+    <b>Totalt kvar denna månad:</b><span ng-bind="user.inkomst - user.utgifter - user.extrautg"></span><br>
+    <br>
+    <button>Add Month</button>
 </div>
