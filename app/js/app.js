@@ -6,7 +6,8 @@ angular.module('BudgetFriend', [
   'ngRoute',
   'BudgetFriend.services',
   'BudgetFriend.directives',
-  'BudgetFriend.controllers'
+  'BudgetFriend.controllers',
+  'BudgetFriend.factories'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/login', {templateUrl: 'partials/loginpage.html', controller: 'MyCtrl1'});
