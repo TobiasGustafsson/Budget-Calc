@@ -11,10 +11,10 @@
         <button id="gmail" class="login-btn">Sign in with Gmail</button><br><br>
         <span>OR</span><br>
         <button id="email" class="login-btn">Sign in with Email</button><br>
-        <span id="register">No account? Register here</span>
+        <span id="register" ng-click="isOpen = !isOpen">No account? Register here</span>
         
         <!-- Dessa element ska ENDAST visas när man klickar "Register here" -->
-        <div id="register-wrap">
+        <div id="register-wrap" ng-show="isOpen">
             <input type="text" id="user-email" placeholder="Email">
             <input type="text" id="user-password" placeholder="Password">
             <button id="register-user">Register</button>

@@ -107,6 +107,10 @@ nav h2 {
 .login-wrap--items #register-wrap {
     width: 40%;
     margin: 15px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .login-wrap--items #register-wrap input[type="text"] {
