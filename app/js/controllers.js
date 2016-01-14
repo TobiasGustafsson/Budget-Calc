@@ -3,9 +3,16 @@
 /* Controllers */
 
 angular.module('BudgetFriend.controllers', [])
-.controller('MyCtrl1', function MyCtrl1($scope, $firebaseArray) {
+.controller('MyCtrl1', ['$scope', 'firebaseData', function MyCtrl1($scope, firebaseData) {
 
-})
-.controller('MyCtrl2', [function() {
+        $scope.data = firebaseData;
 
-  }]);
+    }
+])
+.controller('MyCtrl2', ['$scope', 'firebaseData', function MyCtrl2($scope, firebaseData) {
+
+        $scope.data = firebaseData;
+
+    }
+])
+
