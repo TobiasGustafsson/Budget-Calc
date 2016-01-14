@@ -4,7 +4,7 @@
 
 angular.module('BudgetFriend.factories', ['firebase'])
 .factory('firebaseData', ['$firebaseArray', function($firebaseArray) {
-    var ref = new Firebase("https://budgetfriend.firebaseio.com/");
+    var ref = new Firebase("https://budgetfriend.firebaseio.com/Users");
 
     // this uses AngularFire to create the synchronized array
     return $firebaseArray(ref);
