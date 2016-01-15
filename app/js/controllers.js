@@ -22,16 +22,35 @@ angular.module('BudgetFriend.controllers', [])
 
     }
 ])
-.controller('AuthController', ['$scope', '$location', 'Auth', function AuthController($scope, $location, Auth) {
+.controller('AuthController', ['$scope', '$location', '$firebaseObject', 'Auth', 'Users', 'FirebaseUrl',
+    function AuthController($scope, $location, $firebaseObject, Auth, Users, FirebaseUrl) {
 
-        //TODO: If user doesn't exist in Users array, create a new entry
-
-        var isLoggedIn = function() { //Should be refactored into a service?
+        var isLoggedIn = function() { //TODO: Auth Check should be done in the router via resolve
             if ($scope.authData) { $location.path('/profile') }
         };
 
         Auth.$onAuth(function (authData) {
             $scope.authData = authData;
+
+            Users.$loaded().then(function() { //Refactor to Users service
+                var user = Users.$getRecord(authData.uid);
+                if (!user) {
+                    //Here we create a new record in the database
+
+                    var newUserRef = new Firebase(FirebaseUrl + '/Users/' + authData.uid);
+                    var newUser = $firebaseObject(newUserRef);
+                    var provider = authData.provider; //"google" or "facebook"
+                    newUser.userName = authData[provider].displayName;
+                    newUser.profileImage = authData[provider].profileImageURL;
+                    newUser.savingsGoal = 0;
+                    newUser.transactions = {};
+
+                    newUser.$save().then(function() {
+                        console.log(newUser);
+                    });
+                }
+            });
+
             isLoggedIn();
         });
 
@@ -48,10 +67,10 @@ angular.module('BudgetFriend.controllers', [])
         isLoggedIn();
     }
 ])
-.controller('ProfileController', ['$scope', 'Profile', 'Auth', function ProfileController($scope, Profile, Auth) {
+.controller('ProfileController', ['$scope', 'Users', 'Auth', function ProfileController($scope, Users, Auth) {
         var authData = Auth.$getAuth();
         console.log(authData);
-
+        //Populate the $scope
         switch(authData.provider) {
             case 'google':
                 $scope.name = authData.google.displayName;
