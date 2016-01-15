@@ -9,6 +9,7 @@ angular.module('BudgetFriend.factories', ['firebase'])
         return $firebaseArray(ref);
     }])
     .factory('Auth', ['$firebaseAuth', 'FirebaseUrl', function($firebaseAuth, FirebaseUrl) {
+        //Create and return the AngularFire auth object for our app
         var ref = new Firebase(FirebaseUrl);
         return $firebaseAuth(ref);
     }])
