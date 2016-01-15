@@ -1,6 +1,8 @@
-<div ng-repeat="user in users">
-<h1>User</h1>
-<p>Name: {{user.Name}}</p>
-<p>Age: {{user.Age}}</p>
-<p>Budget: {{user.Budget}}</p>
+<section ng-controller="AuthController">
+    <button ng-click="logout()" class="login-btn">Log out</button><br><br>
+</section>
+
+<div ng-controller="ProfileController">
+    <img ng-src="{{ profileImage }}" src="" alt="{{ name }}" height="100">
+    <span>{{ name }}</span>
 </div>

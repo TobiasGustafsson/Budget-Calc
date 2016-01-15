@@ -9,8 +9,9 @@ angular.module('BudgetFriend', [
   'BudgetFriend.directives',
   'BudgetFriend.controllers',
   'BudgetFriend.factories'
-]).
-config(['$routeProvider', function($routeProvider) {
+])
+.constant('FirebaseUrl', 'https://budgetfriend.firebaseio.com')
+.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/login', {templateUrl: 'partials/loginpage.html', controller: 'MyCtrl1'});
   $routeProvider.when('/profile', {templateUrl: 'partials/profilepage.html', controller: 'MyCtrl2'});
   $routeProvider.otherwise({redirectTo: '/login'});
