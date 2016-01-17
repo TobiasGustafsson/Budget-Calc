@@ -1,27 +1,25 @@
-<nav>
-<h2>BudgetFriend</h2>
-</nav>
+<section class="login-page clearfix">
+    <nav>
+        <h2>BudgetFriend</h2>
+    </nav>
 
-<section id="login-wrap" ng-controller="AuthController">
-    
-    <h1>Welcome</h1>
-    <div class="login-wrap--items">
-        
-        <button id="facebook" ng-click="login('facebook')" class="login-btn">Sign in with Facebook</button><br>
-        <button id="google" ng-click="login('google')" class="login-btn">Sign in with Google</button><br><br>
-        <span>OR</span><br>
-        <button id="email" class="login-btn">Sign in with Email</button><br>
-        <span id="register" ng-click="isOpen = !isOpen">No account? Register here</span>
-        
-        <!-- Dessa element ska ENDAST visas när man klickar "Register here" -->
-        <div id="register-wrap" ng-show="isOpen">
-            <input type="text" id="user-email" placeholder="Email">
-            <input type="text" id="user-password" placeholder="Password">
-            <button id="register-user">Register</button>
+    <div id="login-wrap" ng-controller="AuthController">
+        <h1>Welcome</h1>
+        <div class="login-wrap--items">
+            <button id="facebook" ng-click="login('facebook')" class="login-btn">Sign in with Facebook</button><br>
+            <button id="google" ng-click="login('google')" class="login-btn">Sign in with Google</button><br><br>
+            <span>OR</span><br>
+            <button id="email" class="login-btn">Sign in with Email</button><br>
+            <span id="register" ng-click="isOpen = !isOpen">No account? Register here</span>
+
+            <!-- Dessa element ska ENDAST visas när man klickar "Register here" -->
+            <div id="register-wrap" ng-show="isOpen">
+                <input type="text" id="user-email" placeholder="Email">
+                <input type="text" id="user-password" placeholder="Password">
+                <button id="register-user">Register</button>
+            </div>
         </div>
-        
     </div>
-    
 </section>
 
 <!--<p ng-repeat="fish in event.fishes">{{fish.name}}</p>-->

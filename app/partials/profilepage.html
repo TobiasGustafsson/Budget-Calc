@@ -1,11 +1,30 @@
+<div class="container" ng-controller="ProfileController">
+    <div class="navbar navbar-eden">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">BudgetFriend</a>
+        </div>
+        <!--Nav left-->
+        <ul class="nav navbar-nav">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Edit Goals</a></li>
+            <li><a href="#">Add Expense</a></li>
+            <li><a href="#">Add Income</a></li>
+        </ul>
+        <!--Nav right-->
+        <ul class="nav navbar-nav navbar-right">
+            <li class="navbar-img">
+                <a href="#">
+                    <span>{{ name }}</span>
+                    <img src="{{ profileImage }}" alt="{{ name }}" class="img-circle"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
 <section ng-controller="AuthController">
     <button ng-click="logout()" class="login-btn">Log out</button><br><br>
 </section>
-
-<div ng-controller="ProfileController">
-    <img ng-src="{{ profileImage }}" src="" alt="{{ name }}" height="100">
-    <span>{{ name }}</span>
-</div>
 
 <div>
     <form name="budgetForm">
