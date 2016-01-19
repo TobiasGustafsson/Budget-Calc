@@ -1,48 +1,62 @@
-<div class="container" ng-controller="ProfileController">
-    <div class="navbar navbar-eden">
-        <div class="navbar-header">
-            <a href="#" class="navbar-brand">BudgetFriend</a>
+
+<div id="profile-container">
+    <div class="profile-sidebar" ng-controller="ProfileController">
+        <div class="navbar navbar-eden">
+            <img src="{{ profileImage }}" alt="{{ name }}" class="img-circle"/>
+            <span>{{ name }}</span>
+<!--
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">BudgetFriend</a>
+            </div>
+-->
+            <!--Nav left-->
+<!--
+            <ul class="nav navbar-nav">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Edit Goals</a></li>
+                <li><a href="#">Add Expense</a></li>
+                <li><a href="#">Add Income</a></li>
+            </ul>
+-->
+
         </div>
-        <!--Nav left-->
-        <ul class="nav navbar-nav">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Edit Goals</a></li>
-            <li><a href="#">Add Expense</a></li>
-            <li><a href="#">Add Income</a></li>
-        </ul>
-        <!--Nav right-->
-        <ul class="nav navbar-nav navbar-right">
-            <li class="navbar-img">
-                <a href="#">
-                    <span>{{ name }}</span>
-                    <img src="{{ profileImage }}" alt="{{ name }}" class="img-circle"/>
-                </a>
-            </li>
-        </ul>
+        
+        <div class="profile-navbar">
+            <nav>
+                <ul>
+                    <li>Dashboard</li>
+                    <li>Edit Goals</li>
+                </ul>
+            </nav>
+            <section ng-controller="AuthController">
+                <button ng-click="logout()" class="login-btn">Log out</button><br><br>
+            </section>
+        </div>
     </div>
-</div>
 
-<section ng-controller="AuthController">
-    <button ng-click="logout()" class="login-btn">Log out</button><br><br>
-</section>
-
-<div>
-    <form name="budgetForm">
-        Inkomst:<br>
-        <input type="number" ng-model="user.inkomst"><br>
-        Utgifter: <br>
-        <input type="number" ng-model="user.utgifter"><br>
-        Extra utgifter: <br>
-        <input type="number" ng-model="user.extrautg"><br>
-        Spara: <br>
-        <input type="number" ng-model="user.spara"><br>
-    </form>
-    <b>Inkomst +</b><span ng-bind="user.inkomst"></span><br>
-    <b>Utgifter -</b><span ng-bind="user.utgifter"></span><br>
-    <b>Extra Utgifter -</b><span ng-bind="user.extrautg"></span><br>
-    <b>Spara -</b><span ng-bind="user.spara"></span><br>
-    <b>Spara denna månad:</b><span ng-bind="user.totalSaved + user.spara"></span><br>
-    <b>Totalt kvar denna månad:</b><span ng-bind="user.inkomst - user.utgifter - user.extrautg - user.spara"></span><br>
-    <br>
-    <button>Add Month</button>
+    <div class="budget-display">
+        
+        <form name="budgetForm">
+            <h2>Add new budget</h2>
+            <input type="number" ng-model="user.inkomst" placeholder="Income"><br>
+            <input type="number" ng-model="user.utgifter" placeholder="Expenses"><br>
+            <input type="number" ng-model="user.extrautg" placeholder="Other expenses">
+            <button class="add-budget">Add new budget</button>
+        </form>
+<!--
+        <b>Inkomst +</b><span ng-bind="user.inkomst"></span><br>
+        <b>Utgifter -</b><span ng-bind="user.utgifter"></span><br>
+        <b>Extra Utgifter -</b><span ng-bind="user.extrautg"></span><br>
+        <b>Spara -</b><span ng-bind="user.spara"></span><br>
+        <b>Spara denna månad:</b><span ng-bind="user.totalSaved + user.spara"></span><br>
+        <b>Totalt kvar denna månad:</b><span ng-bind="user.inkomst - user.utgifter - user.extrautg - user.spara"></span><br>
+        <br>
+        <button>Add Month</button>
+-->
+    </div>
+    <div class="remaining-budget-bar">
+        <p>
+            Left after expenses: <span>6300</span>Kr
+        </p>
+    </div>
 </div>

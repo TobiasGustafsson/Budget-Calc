@@ -8,7 +8,7 @@ body, html {
 }
 
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     padding: 0;
     margin: 0;
     background-color: #f5f5f5;
@@ -251,10 +251,147 @@ input[type="text"]:focus {
 /* Profile page */
 
 
+#profile-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0 auto;
+    color: #fff;
+    background-image: url(../images/BudgeFriendBackground.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
+.profile-sidebar {
+    position: relative;
+    width: 30%;
+    height: 100%;
+    float: left;
+    z-index: 2;
+}
 
+.profile-navbar {
+    width: 100%;
+    height: 70%;
+    background: #232d3b;
+}
 
+.profile-sidebar .navbar {
+    width: 100%;
+    height: 30%;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    background: #53a29e;
+    color: #fff;
+    text-align: center;
+}
 
+.profile-sidebar .navbar img {
+    width: 110px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 60px;
+    display: block;
+}
+
+.profile-sidebar .navbar span {
+    margin-top: 20px;
+    display: block;
+    font-size: 18px;
+}
+
+.budget-display { 
+    position: absolute;
+    width: 70%;
+    height: 82%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.remaining-budget-bar {
+    width: 70%;
+    height: 18%;
+    background-color: rgba(255, 255, 255, 0.12);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.remaining-budget-bar p {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    letter-spacing: 1px;
+    font-size: 25px;
+    padding: 0 0 0 80px;
+}
+
+.remaining-budget-bar p span {
+    font-size: 90px;
+    color: #00b18f;
+}
+
+form {
+    width: 500px;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+    top: 30%;
+    transform: translateY(-30%);
+    text-align: center;
+}
+
+form h2 {
+    font-weight: 600;
+    margin: 0 auto;
+    padding: 0 0 50px 0;
+    font-size: 50px;
+}
+
+form .add-budget {
+    width: 500px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background: #00b18f;
+    margin: 30px 0 0 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.add-budget:hover {
+    background: #048a71;
+}
+
+form input[type="number"] {
+    width: 500px;
+    height: 60px;
+    border-radius: 10px;
+    border: none;
+    background: #232d3b;
+    padding: 0 5px 0 5px;
+    margin: 30px 0 0 0;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+form input[type="number"]:focus {
+    outline: none;
+    background: #1c232e;
+}
 
 
 
