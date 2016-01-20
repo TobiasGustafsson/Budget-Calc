@@ -1,6 +1,6 @@
 
-<div id="profile-container">
-    <div class="profile-sidebar" ng-controller="ProfileController">
+<div id="profile-container" ng-controller="ProfileController">
+    <div class="profile-sidebar" >
         <div class="navbar navbar-eden">
             <img src="{{ profileImage }}" alt="{{ name }}" class="img-circle"/>
             <span>{{ name }}</span>
@@ -37,14 +37,12 @@
         
         <form name="budgetForm">
             <h2>Add new budget</h2>
-            <input type="number" ng-model="user.inkomst" placeholder="Income"><br>
-            <input type="number" ng-model="user.utgifter" placeholder="Expenses"><br>
-            <input type="number" ng-model="user.extrautg" placeholder="Other expenses">
-            <input type="number" ng-model="user.extrautg" placeholder="Other expenses">
-            <input type="number" ng-model="user.extrautg" placeholder="Other expenses">
-            <input type="number" ng-model="user.extrautg" placeholder="Other expenses">
-            <input type="number" ng-model="user.extrautg" placeholder="Other expenses">
-            <button class="add-budget">Add new budget</button>
+            <input type="number" ng-model="income" placeholder="Income"><br>
+            <input type="number" ng-model="expense" placeholder="Expenses"><br>
+            <input type="number" placeholder="Other expenses">
+            <input type="number" placeholder="Other expenses">
+            <input type="number" placeholder="Other expenses">
+            <button class="add-budget" ng-click="addBudget()">Add new budget</button>
         </form>
 <!--
         <b>Inkomst +</b><span ng-bind="user.inkomst"></span><br>
@@ -58,7 +56,7 @@
 -->
     </div>
     <div class="remaining-budget-bar">
-        <p>Left after expenses: <span>6300</span>Kr
+        <p>Left after expenses: <span>{{ budgetTotal }}</span>Kr
         </p>
     </div>
 </div>

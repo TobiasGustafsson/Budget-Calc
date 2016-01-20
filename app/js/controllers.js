@@ -42,11 +42,18 @@ angular.module('BudgetFriend.controllers', [])
 .controller('ProfileController', ['$scope', 'Users', 'Auth', '$firebaseArray', 'FirebaseUrl', function ProfileController($scope, Users, Auth, $firebaseArray, FirebaseUrl) {
         var authData = Auth.$getAuth();
         var provider = authData.provider; //"google" or "facebook"
-        var userRef = new Firebase(FirebaseUrl + '/Users/' + authData.uid);
-        var data = $firebaseArray(userRef);
-
+        var userRef = new Firebase(FirebaseUrl + '/Users/' + authData.uid + '/budget/');
+        var userData = $firebaseArray(userRef);
+        console.log(authData);
+        $scope.addBudget = function() {
+        var user = userData;
+        user.$add({
+            income: $scope.income,
+            expenses: $scope.expense
+            });
+        }
         //Populate the $scope
-        $scope.budgetTotal = 0;
+        $scope.budgetTotal = 3000
         $scope.name = authData[provider].displayName;
         $scope.profileImage = authData[provider].profileImageURL;
     }

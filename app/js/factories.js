@@ -22,13 +22,7 @@ angular.module('BudgetFriend.factories', ['firebase'])
     var usersRef = new Firebase(FirebaseUrl + '/Users');
     var users = $firebaseArray(usersRef);
 
-    function addBudget(auth, income, expense, aexpenses) {
-        var user = $firebaseArray(auth);
-        user.$add({
-            income: income,
-            expenses: [expense, aexpenses]
-        });
-    }
+
     function registerNewUser(authData) {
         users.$loaded().then(function () {
             var user = users.$getRecord(authData.uid);
@@ -50,7 +44,6 @@ angular.module('BudgetFriend.factories', ['firebase'])
     }
 
     return {
-        registerNewUser: registerNewUser,
-        addBudget: addBudget
+        registerNewUser: registerNewUser
     };
 })
