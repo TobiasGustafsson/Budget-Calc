@@ -3,8 +3,8 @@
 /* Factories */
 
 angular.module('BudgetFriend.factories', ['firebase'])
-.factory('firebaseData', ['$firebaseArray', function($firebaseArray) {
-    var ref = new Firebase("https://budgetfriend.firebaseio.com/Users");
+.factory('firebaseData', ['$firebaseArray', 'FirebaseUrl', function($firebaseArray, FirebaseUrl) {
+    var ref = new Firebase(FirebaseUrl + '/Users');
     // this uses AngularFire to create the synchronized array
     return $firebaseArray(ref);
 }])
@@ -22,6 +22,13 @@ angular.module('BudgetFriend.factories', ['firebase'])
     var usersRef = new Firebase(FirebaseUrl + '/Users');
     var users = $firebaseArray(usersRef);
 
+    function addBudget(auth, income, expense, aexpenses) {
+        var user = $firebaseArray(auth);
+        user.$add({
+            income: income,
+            expenses: [expense, aexpenses]
+        });
+    }
     function registerNewUser(authData) {
         users.$loaded().then(function () {
             var user = users.$getRecord(authData.uid);
@@ -34,8 +41,6 @@ angular.module('BudgetFriend.factories', ['firebase'])
                 var provider = authData.provider; //"google" or "facebook"
                 newUser.userName = authData[provider].displayName;
                 newUser.profileImage = authData[provider].profileImageURL;
-                newUser.savingsGoal = 0;
-                newUser.transactions = null;
 
                 newUser.$save().then(function () {
                     console.log(newUser);
@@ -45,6 +50,7 @@ angular.module('BudgetFriend.factories', ['firebase'])
     }
 
     return {
-        registerNewUser: registerNewUser
+        registerNewUser: registerNewUser,
+        addBudget: addBudget
     };
 })

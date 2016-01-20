@@ -13,12 +13,6 @@ angular.module('BudgetFriend.controllers', [])
 .controller('MyCtrl2', ['$scope', 'firebaseData', function MyCtrl2($scope, firebaseData) {
 
         $scope.users = firebaseData;
-        $scope.inkomst = 0;
-        $scope.utgifter = 0;
-        $scope.extrautg = 0;
-        $scope.spara = 0;
-        $scope.total = 0;
-        $scope.totalSaved = 0;
 
     }
 ])
@@ -45,11 +39,14 @@ angular.module('BudgetFriend.controllers', [])
         };
     }
 ])
-.controller('ProfileController', ['$scope', 'Users', 'Auth', function ProfileController($scope, Users, Auth) {
+.controller('ProfileController', ['$scope', 'Users', 'Auth', '$firebaseArray', 'FirebaseUrl', function ProfileController($scope, Users, Auth, $firebaseArray, FirebaseUrl) {
         var authData = Auth.$getAuth();
         var provider = authData.provider; //"google" or "facebook"
-        console.log(authData);
+        var userRef = new Firebase(FirebaseUrl + '/Users/' + authData.uid);
+        var data = $firebaseArray(userRef);
+
         //Populate the $scope
+        $scope.budgetTotal = 0;
         $scope.name = authData[provider].displayName;
         $scope.profileImage = authData[provider].profileImageURL;
     }
