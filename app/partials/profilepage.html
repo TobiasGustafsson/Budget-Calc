@@ -23,12 +23,12 @@
         
         <div class="profile-navbar">
             <nav>
-                <button class="logout-btn" style="background: #1c232e;">Dashboard</button>
-                <button class="logout-btn" style="background: #1c232e;">Edit goals</button>
-                <button class="logout-btn" style="background: #1c232e;">Edit goals</button>
+                <button class="profile-btn"><i class="fa fa-cog"></i> Dashboard</button>
+                <button class="profile-btn"><i class="fa fa-pencil"></i> Edit goals</button>
+                <button class="profile-btn"><i class="fa fa-money"></i> Edit budget</button>
             </nav>
             <section ng-controller="AuthController">
-                <button ng-click="logout()" class="logout-btn">Log out</button><br><br>
+                <button ng-click="logout()" class="logout-btn"><i class="fa fa-sign-out"></i>Sign out</button><br><br>
             </section>
         </div>
     </div>
@@ -54,8 +54,7 @@
 -->
     </div>
     <div class="remaining-budget-bar">
-        <p>
-            Left after expenses: <span>6300</span>Kr
+        <p>Left after expenses: <span>6300</span>Kr
         </p>
     </div>
 </div>
