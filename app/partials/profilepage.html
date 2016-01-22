@@ -34,16 +34,43 @@
     </div>
 
     <div class="budget-display">
-        
-        <form name="budgetForm">
-            <h2>Add new budget</h2>
-            <input type="number" ng-model="income" placeholder="Income"><br>
-            <input type="number" ng-model="expense" placeholder="Expenses"><br>
-            <input type="number" placeholder="Other expenses">
-            <input type="number" placeholder="Other expenses">
-            <input type="number" placeholder="Other expenses">
-            <button class="add-budget" ng-click="">Add new budget</button>
-        </form>
+
+            <form name="budgetForm">
+                <h2>Add new budget</h2>
+                <input type="number" ng-model="user.inkomst" placeholder="Income"><br>
+                <input type="number" ng-model="user.utgifter" placeholder="Expenses"><br>
+
+                <div>
+                    <button class="add-budget" ng-click="addFormField($event)">Add Epense</button>
+                    <ul>
+                        <li ng-repeat="elemnt in bugdetNote">
+                            <div>
+                                <div id={{elemnt.id}} style="display:inline">
+                                    <!--
+                                    <span ng-model="elemnt.note" ng-hide="editorEnabled" ng-click="editorEnabled=true">
+                            {{elemnt.note}}
+                        </span>-->
+                                </div>
+                                <div style="display:inline"> <span>
+                            <input type="text" ng-model="elemnt.note2" placeholder="Expense"/>
+                        </span>
+                                </div>
+                                <div ng-show="editorEnabled">
+                                    <input type="text" ng-model="elemnt.note" ng-show="editorEnabled">
+                                    <button class="btntest" href="#" ng-click="editorEnabled=false">Done editing</button>
+                                </div>
+                        <span ng-hide="elemnt.length == 1">
+                         <button class="btntest" ng-click="bugdetNote.splice($index, 1)">Remove</button>
+                    </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="displayitems" style="visibility:hidden;">{{questionelemnt}}</div>
+                <input type="number" ng-model="user.extrautg" placeholder="Other expenses">
+                <button class="add-budget">Add new budget</button>
+            </form>
+
 <!--
         <b>Inkomst +</b><span ng-bind="user.inkomst"></span><br>
         <b>Utgifter -</b><span ng-bind="user.utgifter"></span><br>

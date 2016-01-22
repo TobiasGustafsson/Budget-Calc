@@ -12,9 +12,41 @@ angular.module('BudgetFriend.controllers', [])
 ])
 .controller('MyCtrl2', ['$scope', 'firebaseData', function MyCtrl2($scope, firebaseData) {
 
-        $scope.users = firebaseData;
+    $scope.users = firebaseData;
+    $scope.inkomst = 0;
+    $scope.utgifter = 0;
+    $scope.extrautg = 0;
+    $scope.spara = 0;
+    $scope.total = 0;
+    $scope.totalSaved = 0;
 
+
+
+    var counter = 0;
+    $scope.bugdetNote = [{
+        id: counter,
+        note: 'Expense',
+        answer: ''
+    }];
+
+    $scope.addFormField = function ($event) {
+        counter++;
+        $scope.bugdetNote.push({
+            id: counter,
+            note: 'Expense',
+            note2: '',
+            inline: true
+        });
+        $event.preventDefault();
+    };
+
+    $scope.showitems = function ($event) {
+        $('#displayitems').css('visibility', 'none');
     }
+
+
+
+}
 ])
 .controller('AuthController', ['$scope', '$location', '$firebaseObject', 'Auth', 'Users',
     function AuthController($scope, $location, $firebaseObject, Auth, Users) {
