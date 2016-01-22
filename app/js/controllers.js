@@ -19,30 +19,20 @@ angular.module('BudgetFriend.controllers', [])
     $scope.spara = 0;
     $scope.total = 0;
     $scope.totalSaved = 0;
+    $scope.test = 0;
 
 
 
     var counter = 0;
-    $scope.bugdetNote = [{
-        id: counter,
-        note: 'Expense',
-        answer: ''
-    }];
+    $scope.bugdetNote = [];
 
     $scope.addFormField = function ($event) {
         counter++;
         $scope.bugdetNote.push({
-            id: counter,
-            note: 'Expense',
-            note2: '',
-            inline: true
+            note2: ''
         });
         $event.preventDefault();
     };
-
-    $scope.showitems = function ($event) {
-        $('#displayitems').css('visibility', 'none');
-    }
 
 
 
