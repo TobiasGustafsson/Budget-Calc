@@ -20,7 +20,6 @@ angular.module('BudgetFriend.controllers', [])
     $scope.total = 0;
     $scope.totalSaved = 0;
     $scope.test = 0;
-
     
     var counter = 0;
     $scope.bugdetNote = [];
