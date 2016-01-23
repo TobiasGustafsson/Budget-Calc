@@ -21,11 +21,10 @@ angular.module('BudgetFriend.controllers', [])
     $scope.totalSaved = 0;
     $scope.test = 0;
 
-
-
+    
     var counter = 0;
     $scope.bugdetNote = [];
-
+    
     $scope.addFormField = function ($event) {
         counter++;
         $scope.bugdetNote.push({
@@ -33,9 +32,7 @@ angular.module('BudgetFriend.controllers', [])
         });
         $event.preventDefault();
     };
-
-
-
+ 
 }
 ])
 .controller('AuthController', ['$scope', '$location', '$firebaseObject', 'Auth', 'Users',

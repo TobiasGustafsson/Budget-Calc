@@ -37,7 +37,7 @@
 
             <form name="budgetForm">
                 <h2>Add new budget</h2>
-                <input type="number" ng-model="user.inkomst" placeholder="Monthly Income"><br>
+                <input type="number" ng-model="user.inkomst" placeholder="Monthly Income" ng-model-instant><br>
 
                 <div>
                     <button class="add-budget" ng-click="addFormField($event)">Add Expense</button>
@@ -52,7 +52,7 @@
                                 </div>
                                 <div style="display:inline"> <span>
                             <input type="text" ng-model="user.utgifterNamn" placeholder="Expense"><br>
-                            <input type="number" ng-model="users.note2" placeholder="Cost of expense"/>
+                            <input type="number" ng-model="users.note2" placeholder="Cost of expense" ng-model-instant>
                         </span>
                                     
                                 </div>
@@ -85,7 +85,7 @@
 -->
     </div>
     <div class="remaining-budget-bar">
-        <p>Left after expenses: <span>{{users.note2}}</span>Kr
+        <p>Left after expenses: <span>{{user.inkomst}}</span>Kr
         </p>
     </div>
 </div>
