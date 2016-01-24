@@ -60,12 +60,18 @@ angular.module('BudgetFriend.controllers', [])
 .controller('ProfileController', ['$scope', 'Users', 'Auth', '$firebaseArray', 'FirebaseUrl', function ProfileController($scope, Users, Auth, $firebaseArray, FirebaseUrl) {
         var authData = Auth.$getAuth();
         var provider = authData.provider; //"google" or "facebook"
-        var userRef = new Firebase(FirebaseUrl + '/Users/' + authData.uid + '/budget/');
+        var budgetRef = new Firebase(FirebaseUrl + '/Users/' + authData.uid + '/budget/');
+        var userRef = new Firebase(FirebaseUrl + '/Users/' + authData.uid);
+        var userBudget = $firebaseArray(budgetRef);
         var userData = $firebaseArray(userRef);
-        console.log(authData);
+
+        //Omöjligt att få ut denna data eller displaya den på något vis....Z.Z
+        console.log(userBudget);
+        console.log(userData);
+
         $scope.addBudget = function() {
-        var user = userData;
-        user.$add({
+        var userBud = userBudget;
+        userBud.$add({
             income: $scope.income,
             expenses: $scope.expense
             });
