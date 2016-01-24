@@ -73,11 +73,12 @@ angular.module('BudgetFriend.controllers', [])
         var userBud = userBudget;
         userBud.$add({
             income: $scope.income,
-            expenses: $scope.expense
+            ExpenseName: $scope.expenseName,
+            expense: $scope.expense
             });
         }
         //Populate the $scope
-        $scope.budgetTotal = 3000
+        $scope.budgetTotal = $scope.income - $scope.expense;
         $scope.name = authData[provider].displayName;
         $scope.profileImage = authData[provider].profileImageURL;
     }

@@ -37,18 +37,15 @@
 
             <form name="budgetForm">
                 <h2>Add new budget</h2>
-                <input type="number" ng-model="user.inkomst" placeholder="Monthly Income" ng-model-instant><br>
-
+                <input type="number" ng-model="income" placeholder="Monthly Income" ng-model-instant><br>
+                <input type="text" ng-model="expenseName" placeholder="Name of expense" ng-model-instant><br>
+                <input type="number" ng-model="expense" placeholder="Expense" ng-model-instant><br>
                 <div>
                     <button class="add-budget" ng-click="addFormField($event)">Add Expense</button>
                     <ul>
                         <li ng-repeat="users in bugdetNote">
                             <div>
                                 <div id={{elemnt.id}} style="display:inline">
-                                    <!--
-                                    <span ng-model="elemnt.note" ng-hide="editorEnabled" ng-click="editorEnabled=true">
-                            {{elemnt.note}}
-                        </span>-->
                                 </div>
                                 <div style="display:inline"> <span>
                             <input type="text" ng-model="user.utgifterNamn" placeholder="Expense"><br>
@@ -56,12 +53,7 @@
                         </span>
                                     
                                 </div>
-                                <!--
-                                <div ng-show="editorEnabled">
-                                    <input type="text" ng-model="elemnt.note" ng-show="editorEnabled">
-                                    <button class="btntest" href="#" ng-click="editorEnabled=false">Done editing</button>
-                                </div>
-                                -->
+
                         <span ng-hide="elemnt.length == 1">
                          <button class="btntest" ng-click="bugdetNote.splice($index, 1)">Remove</button>
                     </span>
@@ -70,7 +62,7 @@
                     </ul>
                 </div>
 <!--                <input type="number" ng-model="user.extrautg" placeholder="Other expenses">-->
-                <button class="add-budget">Add new budget</button>
+                <button class="add-budget" ng-click="addBudget()">Add new budget</button>
             </form>
 
 <!--
@@ -85,7 +77,7 @@
 -->
     </div>
     <div class="remaining-budget-bar">
-        <p>Left after expenses: <span>{{user.inkomst}}</span>Kr
+        <p>Left after expenses: <span>{{budgetTotal}}</span>Kr
         </p>
     </div>
 </div>
