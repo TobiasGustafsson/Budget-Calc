@@ -45,7 +45,6 @@
                 <button class="add-budget" ng-click="addBudget()">Add new budget</button>
                 </div>
                     <div ng-show="addedBudget">
-                    <button class="add-budget" ng-click="addFormField($event)">Add Expense</button>
                     <ul>
                         <li ng-repeat="users in bugdetNote">
                             <div>
@@ -59,11 +58,13 @@
                                 </div>
 
                         <span ng-hide="elemnt.length == 1">
-                         <button class="btntest" ng-click="bugdetNote.splice($index, 1)">Remove</button>
+                            <button class="add-budget" ng-click="">Add</button>
+                            <button class="btntest" ng-click="bugdetNote.splice($index, 1)">Remove</button>
                     </span>
                             </div>
                         </li>
                     </ul>
+                <button class="add-budget" ng-click="addFormField($event)">Add Expense</button>
                 </div>
             </form>
 
