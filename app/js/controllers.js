@@ -65,19 +65,24 @@ angular.module('BudgetFriend.controllers', [])
         var userBudget = $firebaseArray(budgetRef);
         var userData = $firebaseArray(userRef);
 
+    var hejhej = function() {
         userBudget.$loaded().then(function() {
             angular.forEach(userBudget, function(val) {
                 console.log("controllers  val -->", val);
                     $scope.addedBudget = val.income - val.expense;
             })
         });
-
+    };
+    
+hejhej();
+    
         $scope.addBudget = function() {
         userBudget.$add({
             income: $scope.income,
             ExpenseName: $scope.expenseName,
             expense: $scope.expense
             });
+            hejhej();
         };
         //Populate the $scope
         $scope.budgetTotal = $scope.income - $scope.expense;
