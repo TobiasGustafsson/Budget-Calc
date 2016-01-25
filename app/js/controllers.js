@@ -12,25 +12,8 @@ angular.module('BudgetFriend.controllers', [])
 ])
 .controller('MyCtrl2', ['$scope', 'firebaseData', function MyCtrl2($scope, firebaseData) {
 
-    $scope.users = firebaseData;
-    $scope.inkomst = 0;
-    $scope.utgifter = 0;
-    $scope.extrautg = 0;
-    $scope.spara = 0;
-    $scope.total = 0;
-    $scope.totalSaved = 0;
-    $scope.test = 0;
     
-    var counter = 0;
-    $scope.bugdetNote = [];
-    
-    $scope.addFormField = function ($event) {
-        counter++;
-        $scope.bugdetNote.push({
-            note2: ''
-        });
-        $event.preventDefault();
-    };
+
  
 }
 ])
@@ -64,28 +47,48 @@ angular.module('BudgetFriend.controllers', [])
         var userRef = new Firebase(FirebaseUrl + '/Users/' + authData.uid);
         var userBudget = $firebaseArray(budgetRef);
         var userData = $firebaseArray(userRef);
+      
 
-    var hejhej = function() {
+    var updateBudget = function() {
         userBudget.$loaded().then(function() {
-            angular.forEach(userBudget, function(val) {
-                console.log("controllers  val -->", val);
-                    $scope.addedBudget = val.income - val.expense;
+            //console.log("id_  ", userBudget["0"].$id);
+            var expenseRef = new Firebase(FirebaseUrl + '/Users/' + authData.uid + '/budget/' + userBudget["0"].$id + '/expenses/');
+            var expenseData = $firebaseArray(expenseRef);
+
+            $scope.addExpense = function() {
+                expenseData.$add({
+                    expense: $scope.expense,
+                    expenseName: $scope.expenseName
+                });
+                updateBudget();
+            };
+            
+            //console.log("controllers  val -->", val);
+            var sumExpenses = 0;
+            expenseData.$loaded().then(function() {
+                angular.forEach(expenseData, function(k) {
+                    console.log("loopppp -->", k)
+                    sumExpenses += k.expense;
+                });
+                
+                $scope.addedBudget = userBudget["0"].income - sumExpenses;
             })
-        });
+            
+            console.log("sumexpensem -->", sumExpenses)
+            
+        })
     };
+updateBudget();
     
-hejhej();
-    
+
+        
         $scope.addBudget = function() {
         userBudget.$add({
-            income: $scope.income,
-            ExpenseName: $scope.expenseName,
-            expense: $scope.expense
-            });
-            hejhej();
+            income: $scope.income
+        });
+            updateBudget();
         };
         //Populate the $scope
-        $scope.budgetTotal = $scope.income - $scope.expense;
         $scope.name = authData[provider].displayName;
         $scope.profileImage = authData[provider].profileImageURL;
     }

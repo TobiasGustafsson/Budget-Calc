@@ -39,32 +39,19 @@
                 <div ng-hide="addedBudget">
                 <h2>Add new budget</h2>
                 <input type="number" ng-model="income" placeholder="Monthly Income" ng-model-instant><br>
-                <input type="text" ng-model="expenseName" placeholder="Name of expense" ng-model-instant><br>
-                <input type="number" ng-model="expense" placeholder="Expense" ng-model-instant><br>
 <!--                <input type="number" ng-model="user.extrautg" placeholder="Other expenses">-->
                 <button class="add-budget" ng-click="addBudget()">Add new budget</button>
                 </div>
                     <div ng-show="addedBudget">
-                    <ul>
-                        <li ng-repeat="users in bugdetNote">
                             <div>
-                                <div id={{elemnt.id}} style="display:inline">
-                                </div>
                                 <div style="display:inline"> <span>
-                            <input type="text" ng-model="user.utgifterNamn" placeholder="Expense"><br>
-                            <input type="number" ng-model="user.note2" placeholder="Cost of expense" ng-model-instant>
+                            <input type="text" ng-model="expenseName" placeholder="Expense"><br>
+                            <input type="number" ng-model="expense" placeholder="Cost of expense" ng-model-instant>
                         </span>
                                     
                                 </div>
-
-                        <span ng-hide="elemnt.length == 1">
-                            <button class="add-budget" ng-click="">Add</button>
-                            <button class="btntest" ng-click="bugdetNote.splice($index, 1)">Remove</button>
-                    </span>
+                            <button class="add-budget" ng-click="addExpense()">Add</button>
                             </div>
-                        </li>
-                    </ul>
-                <button class="add-budget" ng-click="addFormField($event)">Add Expense</button>
                 </div>
             </form>
 
