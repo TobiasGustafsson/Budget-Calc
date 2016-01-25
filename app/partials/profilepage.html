@@ -36,11 +36,15 @@
     <div class="budget-display">
 
             <form name="budgetForm">
+                <div ng-hide="addedBudget">
                 <h2>Add new budget</h2>
                 <input type="number" ng-model="income" placeholder="Monthly Income" ng-model-instant><br>
                 <input type="text" ng-model="expenseName" placeholder="Name of expense" ng-model-instant><br>
                 <input type="number" ng-model="expense" placeholder="Expense" ng-model-instant><br>
-                <div>
+<!--                <input type="number" ng-model="user.extrautg" placeholder="Other expenses">-->
+                <button class="add-budget" ng-click="addBudget()">Add new budget</button>
+                </div>
+                    <div ng-show="addedBudget">
                     <button class="add-budget" ng-click="addFormField($event)">Add Expense</button>
                     <ul>
                         <li ng-repeat="users in bugdetNote">
@@ -61,8 +65,6 @@
                         </li>
                     </ul>
                 </div>
-<!--                <input type="number" ng-model="user.extrautg" placeholder="Other expenses">-->
-                <button class="add-budget" ng-click="addBudget()">Add new budget</button>
             </form>
 
 <!--
