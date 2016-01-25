@@ -68,8 +68,9 @@ angular.module('BudgetFriend.controllers', [])
         userBudget.$loaded().then(function() {
             angular.forEach(userBudget, function(val) {
                 console.log("controllers  val -->", val);
+                    $scope.addedBudget = val.income - val.expense;
+                    console.log($scope.addedBudget); 
             })
-
         });
 
         $scope.addBudget = function() {
