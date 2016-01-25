@@ -65,18 +65,20 @@ angular.module('BudgetFriend.controllers', [])
         var userBudget = $firebaseArray(budgetRef);
         var userData = $firebaseArray(userRef);
 
-        //Omöjligt att få ut denna data eller displaya den på något vis....Z.Z
-        console.log(userBudget);
-        console.log(userData);
+        userBudget.$loaded().then(function() {
+            angular.forEach(userBudget, function(val) {
+                console.log("controllers  val -->", val);
+            })
+
+        });
 
         $scope.addBudget = function() {
-        var userBud = userBudget;
-        userBud.$add({
+        userBudget.$add({
             income: $scope.income,
             ExpenseName: $scope.expenseName,
             expense: $scope.expense
             });
-        }
+        };
         //Populate the $scope
         $scope.budgetTotal = $scope.income - $scope.expense;
         $scope.name = authData[provider].displayName;
