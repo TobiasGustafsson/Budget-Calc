@@ -42,10 +42,10 @@
                 <th><i class="fa fa-times"></i>Remove</th>
             </tr>
             
-            <tr class="expense-items" ng-repeat="expense in allExpenses">
+            <tr class="expense-items" ng-repeat="(id, expense) in allExpenses">
                 <td class="expense-name">{{expense.name}}</td>
                 <td class="expense-cost">{{expense.cost}} KR</td>
-                <td class="expense-remove" ng-click=""><i class="fa fa-times"></i></td>
+                <td class="expense-remove" ng-click="removeExpense(id)"><i class="fa fa-times"></i></td>
             </tr>
             
         </table>
@@ -61,7 +61,7 @@
                         
                             <div>
                                 <div style="display:inline"> <span>
-                            <input type="text" ng-model="expenseName" placeholder="Expense"><br>
+                            <input type="text" ng-model="expenseName" placeholder="Name of expense"><br>
                             <input type="number" ng-model="expense" placeholder="Cost of expense" ng-model-instant>
                         </span>
                                     
