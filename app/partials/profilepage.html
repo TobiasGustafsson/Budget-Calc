@@ -34,7 +34,22 @@
     </div>
 
     <div class="budget-display">
-
+        
+        <table class="expense-field" ng-show="addedBudget">
+            <tr class="expense-header">
+                <th><i class="fa fa-shopping-bag"></i>Expense</th>
+                <th><i class="fa fa-money"></i>Cost</th>
+                <th><i class="fa fa-times"></i>Remove</th>
+            </tr>
+            
+            <tr class="expense-items" ng-repeat="expense in allExpenses">
+                <td class="expense-name">{{expense.name}}</td>
+                <td class="expense-cost">{{expense.cost}} KR</td>
+                <td class="expense-remove" ng-click=""><i class="fa fa-times"></i></td>
+            </tr>
+            
+        </table>
+        
             <form name="budgetForm">
                 <div ng-hide="addedBudget">
                 <h2>Add new budget</h2>
@@ -43,10 +58,7 @@
                 <button class="add-budget" ng-click="addBudget()">Add new budget</button>
                 </div>
                     <div ng-show="addedBudget">
-                        <div ng-repeat="expense in allExpenses">
-                        {{expense.name}}
-                        {{expense.cost}}
-                        </div>
+                        
                             <div>
                                 <div style="display:inline"> <span>
                             <input type="text" ng-model="expenseName" placeholder="Expense"><br>
