@@ -43,8 +43,9 @@
                 <button class="add-budget" ng-click="addBudget()">Add new budget</button>
                 </div>
                     <div ng-show="addedBudget">
-                        <div ng-repeat="(name, cost) in allExpenses">
-                        {{allExpenses.name}} cost is: {{allExpenses.cost}}
+                        <div ng-repeat="expense in allExpenses">
+                        {{expense.name}}
+                        {{expense.cost}}
                         </div>
                             <div>
                                 <div style="display:inline"> <span>

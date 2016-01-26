@@ -75,8 +75,6 @@ angular.module('BudgetFriend.controllers', [])
                     console.log('ALL DATA MAYABEE -->', expTotal);
                     
                 });
-                $scope.nameOf = expTotal.name;
-                $scope.costOf = expTotal.cost;
                 $scope.allExpenses = expTotal;
                 $scope.addedBudget = userBudget["0"].income - sumExpenses;
             })
