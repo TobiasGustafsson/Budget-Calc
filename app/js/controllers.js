@@ -65,15 +65,22 @@ angular.module('BudgetFriend.controllers', [])
             
             //console.log("controllers  val -->", val);
             var sumExpenses = 0;
+            var expTotal = [];
             expenseData.$loaded().then(function() {
                 angular.forEach(expenseData, function(k) {
                     console.log("loopppp -->", k)
                     sumExpenses += k.expense;
+                    
+                    expTotal = ({name: k.expenseName, cost: k.expense});
+                    console.log('ALL DATA MAYABEE -->', expTotal);
+                    
                 });
-                
+                $scope.nameOf = expTotal.name;
+                $scope.costOf = expTotal.cost;
+                $scope.allExpenses = expTotal;
                 $scope.addedBudget = userBudget["0"].income - sumExpenses;
             })
-            
+
             console.log("sumexpensem -->", sumExpenses)
             
         })
