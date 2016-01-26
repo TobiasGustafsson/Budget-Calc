@@ -71,7 +71,7 @@ angular.module('BudgetFriend.controllers', [])
                     console.log("loopppp -->", k)
                     sumExpenses += k.expense;
                     
-                    expTotal = ({name: k.expenseName, cost: k.expense});
+                    expTotal.push({name: k.expenseName, cost: k.expense});
                     console.log('ALL DATA MAYABEE -->', expTotal);
                     
                 });
